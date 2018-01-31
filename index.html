@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="search.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="Page">
+        <div class="container">
+            <span class="search" id="s">
+                <img src="search-engine.svg" style="width: 10vw ;height:10vh;" onclick="any()"/>
+            </span>
+            <div id="textAndInput">
+            <div class="text">Search any wikipedia Page</div>
+            <div class="search-name"><input name="search-text" type="text" id="po"/></div>
+            </div>
+        </div>
+            
+    </div>
+</body>
+<script type="text/javascript">
+function any(){
+    localStorage.setItem("po" , inputSearch.value);
+}
+var myHeaders = new Headers();
+var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ localStorage.getItem("po") +"&format=json&callback=?";
+fetch(url,{
+    method: "POST",
+    accept: "application/json",
+}).then((res)=>res.json()).then((data)=>{
+
+    for(var i=1; i<data.length;i++){
+        for(var j=0;i<data[i].length;j++){
+        }
+    }
+})
+   
+
+</script>
+
+</html>

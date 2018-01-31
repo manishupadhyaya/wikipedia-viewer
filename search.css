@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url("1.jpg");
+    background-size: 100%;
+}
+
+.search {
+    cursor: pointer;
+
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.text {
+    font-size: 5vh;
+    font-family: 'Bellefair', serif;
+    color: #160101;
+}
+input{
+    border-radius: 5vh;
+    text-align: center;
+    color: #dd2c2c;
+    font-family: 'Bellefair', serif;
+}
+.page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.textAndInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:20vh;
+    width: 20vw;
+}
+.search-name{
+    display: flex;
+    justify-content: center;
+}
+
