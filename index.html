@@ -34,8 +34,7 @@ function searchWiki(){
     }
     localStorage.setItem("lastSearch" , term);
 }
-var myHeaders = new Headers();
-var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ localStorage.getItem("lastSearch") +"&format=json&origin=*?";
+var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ encodeURIComponent(term) +"&format=json&origin=*";
 fetch(url,{
     method: "GET",
     headers: {
