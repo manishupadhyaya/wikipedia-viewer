@@ -32,8 +32,7 @@ function searchWiki(){
         console.log("Empty Search Term")
         return;
     }
-    localStorage.setItem("lastSearch" , term);
-}
+localStorage.setItem("lastSearch" , term);
 var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ encodeURIComponent(term) +"&format=json&origin=*";
 fetch(url,{
     method: "GET",
@@ -50,6 +49,7 @@ fetch(url,{
     .catch((err)=>{
         console.log("Fetch Error", err)
     })
+}
 document.addEventListener("DOMContentLoaded", () => {
     const last = localStorage.getItem("lastSearch");
     if(last){
