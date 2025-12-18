@@ -20,6 +20,9 @@
             <div class="text">Search any wikipedia Page</div>
             <div class="search-name"><input name="search-text" type="text" id="po"/></div>
             </div>
+            <div id="results">
+                
+            </div>
         </div>
             
     </div>
@@ -41,9 +44,22 @@ fetch(url,{
     }
 }).then((res)=>res.json()).then((data)=>{
     console.log("API Results", data)
-    for(var i=1; i<data.length;i++){
-        for(var j=0;i<data[i].length;j++){
-        }
+    const titles = data[1];
+    const description = data[2];
+    const links = data[3];
+
+    const resultsDiv = document.getElementById("results")
+    resultsDiv.innerHTML = "";
+    for(let i = 0; i<titles.length;i++){
+        const item = document.createElement("div");
+        item.className = "result-item";
+        item.innerHTML = `
+        <h3><a href = "${links[i]}" target="_blank" rel = "noopener noreferrer">
+        ${titles[i]}
+        </a></h3>
+        <p>${descriptions[i]}</p>
+        `
+        resultsDiv.appendChild(item)
     }
 })
     .catch((err)=>{
