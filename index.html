@@ -14,7 +14,7 @@
     <div class="Page">
         <div class="container">
             <span class="search" id="s">
-                <img src="search-engine.svg" style="width: 10vw ;height:10vh;" onclick="any()"/>
+                <img src="search-engine.svg" style="width: 10vw ;height:10vh;" onclick="searchWiki()"/>
             </span>
             <div id="textAndInput">
             <div class="text">Search any wikipedia Page</div>
@@ -25,22 +25,38 @@
     </div>
 </body>
 <script type="text/javascript">
-function any(){
-    localStorage.setItem("po" , inputSearch.value);
+function searchWiki(){
+    const input = document.getElementById("po")
+    const term = input.value.trim()
+    if(!term){
+        console.log("Empty Search Term")
+        return;
+    }
+    localStorage.setItem("lastSearch" , term);
 }
 var myHeaders = new Headers();
-var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ localStorage.getItem("po") +"&format=json&callback=?";
+var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ localStorage.getItem("lastSearch") +"&format=json&origin=*?";
 fetch(url,{
-    method: "POST",
-    accept: "application/json",
+    method: "GET",
+    headers: {
+        accept: "application/json",
+    }
 }).then((res)=>res.json()).then((data)=>{
-
+    console.log("API Results", data)
     for(var i=1; i<data.length;i++){
         for(var j=0;i<data[i].length;j++){
         }
     }
 })
-   
+    .catch((err)=>{
+        console.log("Fetch Error", err)
+    })
+document.addEventListener("DOMContentLoaded", () => {
+    const last = localStorage.getItem("lastSearch");
+    if(last){
+        document.getElementById("po").value = last
+    }
+})
 
 </script>
 
